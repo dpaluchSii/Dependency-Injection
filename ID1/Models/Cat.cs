@@ -18,7 +18,5 @@ namespace ID1.Models
         {
             return "Cat";
         }
-    }
-
-    
+    }   
 }

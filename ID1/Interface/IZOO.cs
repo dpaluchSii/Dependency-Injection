@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ID1.Interface
 {
-    interface IZOO
+    public interface IZOO
     {
         void addToZOO(IAnimal a);
         string ShowAnimals();

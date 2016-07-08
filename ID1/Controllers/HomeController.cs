@@ -10,12 +10,17 @@ namespace ID1.Controllers
 {
     public class HomeController : Controller
     {
+        private IAnimal ianimal;
+        private IZOO izoo;
+        private Dog dog;
+        private Cat cat;
+        private Bird bird;
+        private ZOO zoo;
 
-        private IAnimal animal;
-        private IZOO zoo;
-        private Dog dog = new Dog();
-        private Cat cat = new Cat();
-        private Bird bird = new Bird();
+        Dog dogO = new Dog();
+        Bird birdO = new Bird();
+        Cat catO = new Cat();
+        ZOO zooO = new ZOO();
 
         public Dog Dog
         {
@@ -56,31 +61,70 @@ namespace ID1.Controllers
             }
         }
 
-        public void message(IAnimal a)
+        public ZOO Zoo
         {
-            this.animal = a;
-            ViewData["aaa"] = animal.getName();
-            ViewData["voice"] = animal.getVoice();
+            get
+            {
+                return zoo;
+            }
+
+            set
+            {
+                zoo = value;
+            }
+        }
+        public HomeController()
+        {
+            Dog = dogO;
+            Bird = birdO;
+            Cat = catO;
+            Zoo = zooO;
         }
 
+        public void message(IAnimal a)
+        {
+            this.ianimal = a;
+            ViewData["aaa"] = ianimal.getName();
+            ViewData["voice"] = ianimal.getVoice();
+        }
 
+        public void addAnimalToList(IZOO z, IAnimal a) 
+        {
+            ianimal = a;
+            izoo = z;
+            z.addToZOO(ianimal);
+        }
 
-        //public void addAnimalToList(IAnimal a, IZOO listOfAnimals)
-        //{
-        //    animal = a;
-        //    zoo = listOfAnimals;
-        //    listOfAnimals.addToZOO(animal);
-        //}
+        public void giveInformation(IZOO z)
+        {
+            izoo = z; //nie wykorzystywane
+            ViewData["count"] = zoo.listOfAnimal.Count; 
+            
+                //ViewData["howmuch"] = zoo.HowMuchItCost();
+            //ViewData["czymjade"] = spc.products; 
+            //_shoppingcart.ShowVehicles();
+        }
+
+        public void fillAction()
+        {
+            this.addAnimalToList(zoo, bird);
+            this.addAnimalToList(zoo, dog);
+            this.addAnimalToList(zoo, cat);
+            this.giveInformation(izoo);
+        }
 
         public ActionResult Index()
         {
+            fillAction();
             //this.message(Dog);
-           // this.message(Bird);
+            // this.message(Bird);
 
             return View();
         }
         public ActionResult Dogg()
         {
+            this.addAnimalToList(zoo, dog);
+            fillAction();
             this.message(dog);
             ViewBag.Message = "DOGggg";
 
@@ -88,6 +132,7 @@ namespace ID1.Controllers
         }
         public ActionResult Birdd()
         {
+            fillAction();
             this.message(bird);
             ViewBag.Message = "Birdddd";
 
@@ -96,6 +141,7 @@ namespace ID1.Controllers
 
         public ActionResult Catt()
         {
+            fillAction();
             this.message(cat);
             ViewBag.Message = "Cattttt";
 
