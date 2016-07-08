@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Dependency Incjection</h1>
+
+    <h2>@ViewBag.Message</h2>
+    <h3>@Html.ActionLink("Dog", "Dogg", "Home")</h3>
+    <h4>@Html.ActionLink("Bird", "Birdd", "Home")</h4>
+    <h5>@Html.ActionLink("Cat", "Catt", "Home")</h5>
+</div>
+
+
+<div class="row">
+    <h2>Animal:  @ViewData["aaa"]</h2>
+    <h3>Voice: @ViewData["voice"]</h3>
+
+</div>
+
