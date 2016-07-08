@@ -73,14 +73,14 @@ namespace ID1.Controllers
                 zoo = value;
             }
         }
+
         public HomeController()
         {
-            Dog = dogO;
-            Bird = birdO;
-            Cat = catO;
-            Zoo = zooO;
+            this.Dog = dogO;
+            this.Bird = birdO;
+            this.Cat = catO;
+            this.Zoo = zooO;
         }
-
         public void message(IAnimal a)
         {
             this.ianimal = a;
@@ -100,7 +100,7 @@ namespace ID1.Controllers
             izoo = z; //nie wykorzystywane
             ViewData["count"] = zoo.listOfAnimal.Count; 
             
-                //ViewData["howmuch"] = zoo.HowMuchItCost();
+            //ViewData["howmuch"] = zoo.HowMuchItCost();
             //ViewData["czymjade"] = spc.products; 
             //_shoppingcart.ShowVehicles();
         }
