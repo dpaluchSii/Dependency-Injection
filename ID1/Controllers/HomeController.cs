@@ -81,6 +81,7 @@ namespace ID1.Controllers
             this.Cat = catO;
             this.Zoo = zooO;
         }
+
         public void message(IAnimal a)
         {
             this.ianimal = a;
@@ -98,7 +99,8 @@ namespace ID1.Controllers
         public void giveInformation(IZOO z)
         {
             izoo = z; //nie wykorzystywane
-            ViewData["count"] = zoo.listOfAnimal.Count; 
+            ViewData["count"] = zoo.listOfAnimal.Count;
+            ViewData["list"] = zoo.ShowAnimals();
             
             //ViewData["howmuch"] = zoo.HowMuchItCost();
             //ViewData["czymjade"] = spc.products; 
